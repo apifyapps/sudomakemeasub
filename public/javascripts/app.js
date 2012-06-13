@@ -5,60 +5,33 @@ var subsUrl = {
   ingredients: "http://apify.heroku.com/api/subway_ingredients.json?callback=?",
   sauces: "http://apify.heroku.com/api/subway_sauces.json?callback=?"
 };
-// var subs = {
-//   names: [],
-//   breads: [],
-//   cheeses: [],
-//   ingredients: [],
-//   sauces: []
-// };
 var subs = {
-  names: [{ name: "Chicken Strips", image: "/assets/FoodMenu/small/subs/ChickenStrip.png"}, { name: "Chicken Teriyaki", image: "/assets/FoodMenu/small/subs/ChTeri.png"}, { name: "Ham", image: "/assets/FoodMenu/small/subs/Ham.png"}, { name: "Roast Beef", image: "/assets/FoodMenu/small/subs/RstBeef.png"}, { name: "Roasted Chicken", image: "/assets/FoodMenu/small/subs/RstCh.png"}, { name: "Subway Club Â®", image: "/assets/FoodMenu/small/subs/SubClub.png"}, { name: "Turkey", image: "/assets/FoodMenu/small/subs/Turkey.png"}, { name: "Turkey & Ham", image: "/assets/FoodMenu/small/subs/TurkeyHam.png"}, { name: "Veggie Delite Â®", image: "/assets/FoodMenu/small/subs/VegDel.png"}, { name: "Chicken & Bacon Ranch Melt", image: "/assets/FoodMenu/small/subs/ChBacRanch.png"}, { name: "Chicken Fillet", image: "/assets/FoodMenu/small/subs/ChFillet.png"}, { name: "Chicken Parmigiana Melt", image: "/assets/FoodMenu/small/subs/chParm.png"}, { name: "Chicken Schnitzel", image: "/assets/FoodMenu/small/subs/ChknSchnitzel.png"}, { name: "Italian B.M.T Â®", image: "/assets/FoodMenu/small/subs/ItlBMT.png"}, { name: "Meatball", image: "/assets/FoodMenu/small/subs/Meatball.png"}, { name: "Moroccan Lamb", image: "/assets/FoodMenu/small/subs/SubMoroccan.png"}, { name: "Pizza Sub with Cheese", image: "/assets/FoodMenu/small/subs/Pizza.png"}, { name: "Steak & Cheese", image: "/assets/FoodMenu/small/subs/StCheese.png"}, { name: "Subway Melt â¢", image: "/assets/FoodMenu/small/subs/SubMelt.png"}, { name: "Subway Seafood Sensation â¢", image: "/assets/FoodMenu/small/subs/SfSensation.png"}, { name: "Tuna", image: "/assets/FoodMenu/small/subs/Tuna.png"}, { name: "Veggie Patty", image: "/assets/FoodMenu/small/subs/VegPatty.png"}, { name: "Bacon, Egg & Cheese", image: "/assets/FoodMenu/small/subs/BaconEgg.png"}, { name: "Egg & Cheese", image: "/assets/FoodMenu/small/subs/cheeseEgg.png"}, { name: "Ham, Egg & Cheese", image: "/assets/FoodMenu/small/subs/HamEgg.png"}],
-  breads: [{ name: "Honey Oat", image: "/assets/FoodMenu/small/breads/HoneyOat.png"}, { name: "Italian Herbs & Cheese", image: "/assets/FoodMenu/small/breads/ItalHerbsCheese.png"}, { name: "Wheat", image: "/assets/FoodMenu/small/breads/Wheat.png"}, { name: "Multigrain", image: "/assets/FoodMenu/small/breads/Multigrain.png"}, { name: "White", image: "/assets/FoodMenu/small/breads/White.png"}],
-  cheeses: [{ name: "Cheddar", image: "/assets/FoodMenu/small/cheeses/cheddar.png"}, { name: "Old English", image: "/assets/FoodMenu/small/cheeses/OldEng.png"}, { name: "Swiss", image: "/assets/FoodMenu/small/cheeses/Swiss.png"}, { name: "Mozzarella", image: "/assets/FoodMenu/small/cheeses/Moz.png"}],
-  ingredients: [{ name: "Capsicum", image: "/assets/FoodMenu/small/salads/capsicum.png"}, { name: "Carrot", image: "/assets/FoodMenu/small/salads/carrot.png"}, { name: "Cucumber", image: "/assets/FoodMenu/small/salads/cucumber.png"}, { name: "Jalapenos", image: "/assets/FoodMenu/small/salads/jalap.png"}, { name: "Lettuce", image: "/assets/FoodMenu/small/salads/Lettuce.png"}, { name: "Olives", image: "/assets/FoodMenu/small/salads/olives.png"}, { name: "Pickles", image: "/assets/FoodMenu/small/salads/Pickles.png"}, { name: "Tomato", image: "/assets/FoodMenu/small/salads/tomato.png"}, { name: "Avocado", image: "/assets/FoodMenu/small/salads/avo.png"}, { name: "Onion", image: "/assets/FoodMenu/small/salads/onion.png"}],
-  sauces: [{ name: "BBQ", image: "/assets/FoodMenu/small/sauces/SauceBBQ.png"}, { name: "Chipotle", image: "/assets/FoodMenu/small/sauces/SauceChipo.png"}, { name: "Honey Mustard", image: "/assets/FoodMenu/small/sauces/SauceHonMus.png"}, { name: "Marinara", image: "/assets/FoodMenu/small/sauces/SauceMarinara.png"}, { name: "Mayo", image: "/assets/FoodMenu/small/sauces/SauceMayo.png"}, { name: "Ranch", image: "/assets/FoodMenu/small/sauces/SauceRanch.png"}, { name: "Sweet Chilli", image: "/assets/FoodMenu/small/sauces/SauceSwChilli.png"}, { name: "Sweet Onion", image: "/assets/FoodMenu/small/sauces/SauceSwOnion.png"}, { name: "Thousand Island", image: "/assets/FoodMenu/small/sauces/SauceThousIsl.png"}, { name: "Tomato", image: "/assets/FoodMenu/small/sauces/SauceTomato.png"}, { name: "Hot Chilli", image: "/assets/FoodMenu/small/sauces/Sauce_HotChilli.png"}, { name: "Mint Yoghurt", image: "/assets/FoodMenu/small/.../Sauce_MintYoghurti.png"}]
+  names: [],
+  breads: [],
+  cheeses: [],
+  ingredients: [],
+  sauces: []
 };
 var randomSub = {};
 var imageBaseUrl = "http://www.subway.com.au";
+
 $(function(){
   //Set title
   var title1 = '$ sudo make me a sub';
   var title2 = 'Generate Random Sub of the Day';
   $('#generate-random-sub').text(getRandomNumber(100) % 3 == 0 ? title1 : title2);
-  //Load subway data
-  function initializeSubs(){
-    $.getJSON(subsUrl.names, function(data){
-      subs.names = JSON.parse(data);
-    });
-  }
-  function initializeBreads(){
-    $.getJSON(subsUrl.breads, function(data){
-      subs.breads = JSON.parse(data);
-    });
-  }
-  function initializeCheeses(){
-    $.getJSON(subsUrl.cheeses, function(data){
-      subs.cheeses = JSON.parse(data);
-    });
-  }
-  function initializeIngredients(){
-    $.getJSON(subsUrl.ingredients, function(data){
-      subs.ingredients = JSON.parse(data);
-    });
-  }
-  function initializeSauces(){
-    $.getJSON(subsUrl.sauces, function(data){
-      subs.sauces = JSON.parse(data);
-    });
-  };
-  (function initializeData(){
-    initializeSubs();
-    initializeBreads();
-    initializeCheeses();
-    initializeIngredients();
-    initializeSauces();
-  })//();
+
+  //Load subs data
+  $.when($.getJSON(subsUrl.names), $.getJSON(subsUrl.breads), $.getJSON(subsUrl.cheeses), $.getJSON(subsUrl.ingredients), $.getJSON(subsUrl.sauces)).done(function(names, breads, cheeses, ingredients, sauces){
+    subs.names = JSON.parse(names[0]);
+    subs.breads = JSON.parse(breads[0]);
+    subs.cheeses = JSON.parse(cheeses[0]);
+    subs.ingredients = JSON.parse(ingredients[0]);
+    subs.sauces = JSON.parse(sauces[0]);
+    generateRandomSub();
+  });
+
+  // Random utils
   function getRandomNumber(maxValue){
     return Math.floor(Math.random() * maxValue)
   }
@@ -75,24 +48,13 @@ $(function(){
     }
     return chosen;
   }
+
   //Choose Random Sub
   function chooseRandomSub(){
     randomSub.name = chooseRandom(subs.names);
-  }
-  //Choose Random Bread
-  function chooseRandomBread(){
     randomSub.bread = chooseRandom(subs.breads);
-  }
-  //Choose Random Cheese
-  function chooseRandomCheese(){
     randomSub.cheese = chooseRandom(subs.cheeses);
-  }
-  //Choose multiple ingredients
-  function chooseRandomIngredients(){
     randomSub.ingredients = chooseMultipleRandom(subs.ingredients, 2);
-  }
-  //Choose multiple sauce
-  function chooseRandomSauces(){
     randomSub.sauces = chooseMultipleRandom(subs.sauces, 3);
   }
   // Fill sub, bread and cheese
@@ -139,13 +101,8 @@ $(function(){
 
   function generateRandomSub(){
     chooseRandomSub();
-    chooseRandomBread();
-    chooseRandomCheese();
-    chooseRandomIngredients();
-    chooseRandomSauces();
     fillRandomSub();
   }
-  generateRandomSub();
   $('#generate-random-sub').click(function(){
     generateRandomSub();
   });
