@@ -5,6 +5,8 @@ class RandomSub < Sinatra::Base
     enable :sessions
   end
 
+  set :root, File.dirname(__FILE__)
+
   use Sass::Plugin::Rack
 
   configure :production do
