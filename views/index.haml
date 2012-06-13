@@ -1,3 +1,46 @@
 .content
-  = @msg
-  = @counter
+  %button.punch#generate-random-sub
+  .sub_contents
+    .row
+      .span4.random_sub
+        .thumbnail
+          %img{src: ''}
+          .caption
+            %h5
+              Sub
+            %p
+              .label
+      .span2.random_bread
+        .thumbnail
+          %img{src: ''}
+          .caption
+            %h5
+              Bread
+            %p
+              .label
+      .span2.random_cheese
+        .thumbnail
+          %img{src: ''}
+          .caption
+            %h5
+              Cheese
+            %p
+              .label
+    .row.ingredients_row
+    .row.sauces_row
+    .random_ingredient_template{style: 'display:none'}
+      .thumbnail
+        %img{src: '', onError: "setDefaultImage(this);"}
+        .caption
+          %h5
+            Veggie
+          %p
+            .label
+    .random_sauce_template{style: 'display:none'}
+      .thumbnail
+        %img{src: '', onError: "setDefaultImage(this);"}
+        .caption
+          %h5
+            Sauce
+          %p
+            .label
